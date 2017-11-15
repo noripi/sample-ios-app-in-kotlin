@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListViewController.h
 //  todo-list
 //
 //  Created by NoriyukiIshida on 2017/11/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ListViewController : UIViewController
 @end
 
