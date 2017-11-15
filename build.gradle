@@ -1,0 +1,20 @@
+apply plugin: 'konan'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:+"
+    }
+}
+
+konan.targets = ['iphone']
+
+konanArtifacts {
+    program('app')
+}
