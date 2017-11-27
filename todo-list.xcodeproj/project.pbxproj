@@ -13,6 +13,7 @@
 		855644621FBC91BC00464A68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 855644611FBC91BC00464A68 /* Assets.xcassets */; };
 		855644651FBC91BC00464A68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855644631FBC91BC00464A68 /* LaunchScreen.storyboard */; };
 		855644681FBC91BC00464A68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 855644671FBC91BC00464A68 /* main.m */; };
+		857AC7F91FCC5B4D000AB2F9 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 857AC7F81FCC5B4D000AB2F9 /* EditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		855644641FBC91BC00464A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		855644661FBC91BC00464A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		855644671FBC91BC00464A68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		857AC7F71FCC5B4D000AB2F9 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		857AC7F81FCC5B4D000AB2F9 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				855644591FBC91BC00464A68 /* AppDelegate.m */,
 				8556445B1FBC91BC00464A68 /* ListViewController.h */,
 				8556445C1FBC91BC00464A68 /* ListViewController.m */,
+				857AC7F71FCC5B4D000AB2F9 /* EditViewController.h */,
+				857AC7F81FCC5B4D000AB2F9 /* EditViewController.m */,
 				8556445E1FBC91BC00464A68 /* Main.storyboard */,
 				855644611FBC91BC00464A68 /* Assets.xcassets */,
 				855644631FBC91BC00464A68 /* LaunchScreen.storyboard */,
@@ -190,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857AC7F91FCC5B4D000AB2F9 /* EditViewController.m in Sources */,
 				8556445D1FBC91BC00464A68 /* ListViewController.m in Sources */,
 				855644681FBC91BC00464A68 /* main.m in Sources */,
 				8556445A1FBC91BC00464A68 /* AppDelegate.m in Sources */,

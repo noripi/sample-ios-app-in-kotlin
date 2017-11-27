@@ -13,3 +13,9 @@
 
 @implementation ListViewController
 @end
+
+@interface TaskItemTableViewCell ()
+@end
+
+@implementation TaskItemTableViewCell
+@end

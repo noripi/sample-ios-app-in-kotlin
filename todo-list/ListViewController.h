@@ -11,3 +11,5 @@
 @interface ListViewController : UIViewController
 @end
 
+@interface TaskItemTableViewCell: UITableViewCell
+@end

@@ -38,22 +38,39 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskItemCell" textLabel="l3a-1g-hKT" style="IBUITableViewCellStyleDefault" id="yJq-aD-Ysy">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskItemTableViewCell" rowHeight="80" id="yJq-aD-Ysy" customClass="TaskItemTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yJq-aD-Ysy" id="OUm-TM-S6r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l3a-1g-hKT">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="郵便局に行く" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOs-ZF-AjW">
+                                                    <rect key="frame" x="16" y="21.5" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.11.30 12:00 まで" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-mi-Ila">
+                                                    <rect key="frame" x="16" y="49" width="343" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OOs-ZF-AjW" firstAttribute="leading" secondItem="OUm-TM-S6r" secondAttribute="leading" constant="16" id="Hk4-Je-13R"/>
+                                                <constraint firstAttribute="trailing" secondItem="OOs-ZF-AjW" secondAttribute="trailing" constant="16" id="HoE-YO-lsS"/>
+                                                <constraint firstAttribute="trailing" secondItem="OMI-mi-Ila" secondAttribute="trailing" constant="16" id="PXs-yG-qpc"/>
+                                                <constraint firstItem="OMI-mi-Ila" firstAttribute="centerY" secondItem="OUm-TM-S6r" secondAttribute="centerY" constant="17" id="gmJ-1z-QaJ"/>
+                                                <constraint firstItem="OOs-ZF-AjW" firstAttribute="centerY" secondItem="OUm-TM-S6r" secondAttribute="centerY" constant="-8" id="hpl-jm-rWN"/>
+                                                <constraint firstItem="OMI-mi-Ila" firstAttribute="leading" secondItem="OOs-ZF-AjW" secondAttribute="leading" id="puU-nC-WbQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskDeadlineLabel" destination="OMI-mi-Ila" id="jUL-Nf-qVc"/>
+                                            <outlet property="taskTitleLabel" destination="OOs-ZF-AjW" id="tiO-Y4-oqH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -75,7 +92,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huI-5P-EO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="47"/>
+            <point key="canvasLocation" x="222" y="47"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oxj-lz-tvV">
+            <objects>
+                <viewController id="As6-NB-I89" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H2Z-7t-dYm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="郵便局に行く" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nzj-xb-Zh5">
+                                <rect key="frame" x="101.5" y="36" width="257.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z8-tq-HiA">
+                                <rect key="frame" x="16" y="36" width="69.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="締切時刻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-Iu-zyc">
+                                <rect key="frame" x="16" y="94" width="69.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.11.30 12:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxs-mA-YUZ">
+                                <rect key="frame" x="109.5" y="94" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="an0-Sq-Mil">
+                                <rect key="frame" x="251.5" y="89" width="31" height="30"/>
+                                <state key="normal" title="変更"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7z8-tq-HiA" firstAttribute="top" secondItem="kqK-M4-tAW" secondAttribute="top" constant="16" id="BVF-xv-1dR"/>
+                            <constraint firstItem="vxs-mA-YUZ" firstAttribute="centerY" secondItem="an0-Sq-Mil" secondAttribute="centerY" id="CQ4-Tg-GGc"/>
+                            <constraint firstItem="nzj-xb-Zh5" firstAttribute="leading" secondItem="7z8-tq-HiA" secondAttribute="trailing" constant="16" id="KT7-OI-PfZ"/>
+                            <constraint firstItem="7z8-tq-HiA" firstAttribute="centerY" secondItem="nzj-xb-Zh5" secondAttribute="centerY" id="P7I-0P-8pS"/>
+                            <constraint firstItem="nzj-xb-Zh5" firstAttribute="top" secondItem="kqK-M4-tAW" secondAttribute="top" constant="16" id="Wa9-A4-PIm"/>
+                            <constraint firstItem="vxs-mA-YUZ" firstAttribute="leading" secondItem="UcC-Iu-zyc" secondAttribute="trailing" constant="24" id="ZyQ-VD-PeW"/>
+                            <constraint firstItem="UcC-Iu-zyc" firstAttribute="top" secondItem="7z8-tq-HiA" secondAttribute="bottom" constant="28" id="ceG-Qi-Qsx"/>
+                            <constraint firstItem="kqK-M4-tAW" firstAttribute="trailing" secondItem="nzj-xb-Zh5" secondAttribute="trailing" constant="16" id="fPj-h0-uc7"/>
+                            <constraint firstItem="kqK-M4-tAW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="an0-Sq-Mil" secondAttribute="trailing" constant="16" id="fu4-Yd-yfH"/>
+                            <constraint firstItem="7z8-tq-HiA" firstAttribute="leading" secondItem="kqK-M4-tAW" secondAttribute="leading" constant="16" id="i6K-gI-83Y"/>
+                            <constraint firstItem="vxs-mA-YUZ" firstAttribute="centerY" secondItem="UcC-Iu-zyc" secondAttribute="centerY" id="jbO-eY-OZP"/>
+                            <constraint firstItem="UcC-Iu-zyc" firstAttribute="width" secondItem="7z8-tq-HiA" secondAttribute="width" id="m9r-5j-Fzs"/>
+                            <constraint firstItem="UcC-Iu-zyc" firstAttribute="leading" secondItem="7z8-tq-HiA" secondAttribute="leading" id="rej-jS-7sC"/>
+                            <constraint firstItem="an0-Sq-Mil" firstAttribute="leading" secondItem="vxs-mA-YUZ" secondAttribute="trailing" constant="16" id="ysc-dE-AFj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kqK-M4-tAW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fiv-ao-p1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="47.226386806596707"/>
         </scene>
     </scenes>
 </document>
