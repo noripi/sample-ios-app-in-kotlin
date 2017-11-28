@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="222" y="47"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="oxj-lz-tvV">
             <objects>
-                <viewController id="As6-NB-I89" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditViewController" id="As6-NB-I89" customClass="EditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H2Z-7t-dYm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
