@@ -3,6 +3,7 @@ import platform.Foundation.*
 import platform.UIKit.*
 
 @ExportObjCClass
+@Suppress("CONFLICTING_OVERLOADS")
 class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
                                               UITableViewDelegateProtocol,
                                               UITableViewDataSourceProtocol {
@@ -20,6 +21,10 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
                 cellForRowAtIndexPath)
 
         return cell
+    }
+
+    override fun tableView(tableView: UITableView, heightForRowAtIndexPath: NSIndexPath): CGFloat {
+        return 80.0
     }
 }
 
