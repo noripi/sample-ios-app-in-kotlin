@@ -129,6 +129,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="an0-Sq-Mil">
                                 <rect key="frame" x="251.5" y="89" width="31" height="30"/>
                                 <state key="normal" title="変更"/>
+                                <connections>
+                                    <action selector="deadlineUpdateButtonDidTap:" destination="As6-NB-I89" eventType="touchUpInside" id="dsN-Xw-gdt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,6 +153,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kqK-M4-tAW"/>
                     </view>
+                    <connections>
+                        <outlet property="taskDeadlineLabel" destination="vxs-mA-YUZ" id="gax-dM-ZIB"/>
+                        <outlet property="taskTitleTextField" destination="nzj-xb-Zh5" id="Sf2-cx-3TN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fiv-ao-p1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

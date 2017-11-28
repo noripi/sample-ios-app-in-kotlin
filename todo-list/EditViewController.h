@@ -9,4 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EditViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *taskTitleTextField;
+@property (weak, nonatomic) IBOutlet UILabel *taskDeadlineLabel;
+
+- (IBAction)deadlineUpdateButtonDidTap:(id)sender;
 @end
