@@ -1,6 +1,7 @@
 import kotlinx.cinterop.*
 import platform.Foundation.*
 import platform.UIKit.*
+import platform.CoreGraphics.*
 
 @ExportObjCClass
 @Suppress("CONFLICTING_OVERLOADS")
