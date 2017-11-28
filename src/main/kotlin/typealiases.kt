@@ -1,0 +1,1 @@
+typealias NSInteger = Long

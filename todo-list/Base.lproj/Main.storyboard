@@ -13,7 +13,6 @@
         <!--Navigation Controller-->
         <scene sceneID="1dy-zl-bwA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EsE-kN-Plm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="pXF-8N-HzV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DIP-H3-pWz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -23,6 +22,7 @@
                         <segue destination="Mbg-xo-pkz" kind="relationship" relationship="rootViewController" id="dLc-oe-TQh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EsE-kN-Plm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-491" y="48"/>
         </scene>
@@ -68,8 +68,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="taskDeadlineLabel" destination="OMI-mi-Ila" id="jUL-Nf-qVc"/>
-                                            <outlet property="taskTitleLabel" destination="OOs-ZF-AjW" id="tiO-Y4-oqH"/>
+                                            <outlet property="taskDeadlineLabel" destination="OMI-mi-Ila" id="Ceg-H2-1Yp"/>
+                                            <outlet property="taskTitleLabel" destination="OOs-ZF-AjW" id="yv8-06-KuR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

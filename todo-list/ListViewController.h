@@ -12,4 +12,6 @@
 @end
 
 @interface TaskItemTableViewCell: UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *taskTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskDeadlineLabel;
 @end

@@ -6,27 +6,42 @@ import platform.UIKit.*
 class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
                                               UITableViewDelegateProtocol,
                                               UITableViewDataSourceProtocol {
-    @ObjCOutlet
-    private lateinit var label: UILabel
 
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(ListViewController(aDecoder))
 
-    override fun debugDescription() = "ListViewController"
+    override fun debugDescription() = this::class.simpleName!!
 
-    override fun viewDidLoad() {
-        super.viewDidLoad()
-
-        this.title = "タスク一覧"
-    }
-
-    override fun tableView(tableView: UITableView, numberOfRowsInSection: Long): Long {
+    override fun tableView(tableView: UITableView, numberOfRowsInSection: NSInteger): NSInteger {
         return 10
     }
 
     override fun tableView(tableView: UITableView, cellForRowAtIndexPath: NSIndexPath): UITableViewCell {
-        val cell = tableView.dequeueReusableCellWithIdentifier("TaskItemCell",
+        val cell = tableView.dequeueReusableCellWithIdentifier(TaskItemTableViewCell::class.simpleName!!,
                 cellForRowAtIndexPath)
 
         return cell
     }
+}
+
+@ExportObjCClass
+class TaskItemTableViewCell(aDecoder: NSCoder) : UITableViewCell(aDecoder) {
+    @ObjCOutlet
+    private lateinit var taskTitleLabel: UILabel
+
+    @ObjCOutlet
+    private lateinit var taskDeadlineLabel: UILabel
+
+    override fun initWithCoder(aDecoder: NSCoder) = this.initBy(TaskItemTableViewCell(aDecoder))
+
+    var taskTitle: String?
+        get() = this.taskTitleLabel.text
+        set(value) {
+            this.taskTitleLabel.text = value
+        }
+
+    var taskDeadline: String?
+        get() = this.taskDeadlineLabel.text
+        set(value) {
+            this.taskDeadlineLabel.text = value
+        }
 }

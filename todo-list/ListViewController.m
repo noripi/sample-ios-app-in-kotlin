@@ -8,7 +8,7 @@
 
 #import "ListViewController.h"
 
-@interface ListViewController ()
+@interface ListViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation ListViewController
