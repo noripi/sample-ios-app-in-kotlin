@@ -12,19 +12,45 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
 
     override fun debugDescription() = this::class.simpleName!!
 
+    override fun viewDidLoad() {
+        super.viewDidLoad()
+
+        this.title = "タスク一覧"
+        this.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title = "追加",
+                style = UIBarButtonItemStylePlain,
+                target = this,
+                action = NSSelectorFromString("addButtonDidTap:")
+        )
+    }
+
     override fun tableView(tableView: UITableView, numberOfRowsInSection: NSInteger): NSInteger {
         return 10
     }
 
     override fun tableView(tableView: UITableView, cellForRowAtIndexPath: NSIndexPath): UITableViewCell {
         val cell = tableView.dequeueReusableCellWithIdentifier(TaskItemTableViewCell::class.simpleName!!,
-                cellForRowAtIndexPath)
+                cellForRowAtIndexPath).uncheckedCast<TaskItemTableViewCell>()
+
+        cell.taskTitle = "郵便局に行く"
+        cell.taskDeadline = "2017.11.30 12:00"
 
         return cell
     }
 
     override fun tableView(tableView: UITableView, heightForRowAtIndexPath: NSIndexPath): CGFloat {
         return 80.0
+    }
+
+    @ObjCAction
+    fun addButtonDidTap(sender: ObjCObject?) {
+        val storyboard = UIStoryboard.storyboardWithName(MAIN_STORYBOARD_NAME, bundle = null)
+        val editViewController = storyboard.instantiateViewControllerWithIdentifier(
+                EditViewController::class.simpleName!!)
+
+        val navigationController = UINavigationController(rootViewController = editViewController)
+
+        this.presentViewController(navigationController, animated = true, completion = null)
     }
 }
 
