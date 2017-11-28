@@ -8,6 +8,9 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
                                               UITableViewDelegateProtocol,
                                               UITableViewDataSourceProtocol {
 
+    @ObjCOutlet
+    private lateinit var tableView: UITableView
+
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(ListViewController(aDecoder))
 
     override fun debugDescription() = this::class.simpleName!!
@@ -24,16 +27,23 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
         )
     }
 
+    override fun viewWillAppear(animated: Boolean) {
+        super.viewWillAppear(animated)
+
+        this.tableView.reloadData()
+    }
+
     override fun tableView(tableView: UITableView, numberOfRowsInSection: NSInteger): NSInteger {
-        return 10
+        return taskList.size.toLong()
     }
 
     override fun tableView(tableView: UITableView, cellForRowAtIndexPath: NSIndexPath): UITableViewCell {
         val cell = tableView.dequeueReusableCellWithIdentifier(TaskItemTableViewCell::class.simpleName!!,
                 cellForRowAtIndexPath).uncheckedCast<TaskItemTableViewCell>()
 
-        cell.taskTitle = "郵便局に行く"
-        cell.taskDeadline = "2017.11.30 12:00"
+        val taskItem = taskList[cellForRowAtIndexPath.row.toInt()]
+        cell.taskTitle = taskItem.title
+        cell.taskDeadline = taskItem.deadline
 
         return cell
     }
@@ -56,6 +66,7 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
 
 @ExportObjCClass
 class TaskItemTableViewCell(aDecoder: NSCoder) : UITableViewCell(aDecoder) {
+
     @ObjCOutlet
     private lateinit var taskTitleLabel: UILabel
 

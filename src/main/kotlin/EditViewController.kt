@@ -4,6 +4,11 @@ import platform.UIKit.*
 
 @ExportObjCClass
 class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
+    @ObjCOutlet
+    private lateinit var taskTitleTextField: UITextField
+
+    @ObjCOutlet
+    private lateinit var taskDeadlineLabel: UILabel
 
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(EditViewController(aDecoder))
 
@@ -23,6 +28,8 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
 
     @ObjCAction
     fun closeButtonDidTap(sender: ObjCObject?) {
+        taskList.add(TaskItem(title = "郵便局に行く", deadline = "2017.11.30 12:00"))
+
         this.dismissViewControllerAnimated(true, completion = null)
     }
 }

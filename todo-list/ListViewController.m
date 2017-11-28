@@ -8,7 +8,8 @@
 
 #import "ListViewController.h"
 
-@interface ListViewController ()
+@interface ListViewController () <UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation ListViewController
