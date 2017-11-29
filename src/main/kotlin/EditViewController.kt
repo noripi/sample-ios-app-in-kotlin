@@ -78,7 +78,17 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     }
 
     private fun showInsufficientDataAlert() {
-
+        val alert = UIAlertController.alertControllerWithTitle(
+                title = "情報",
+                message = "タイトルか締切日が入力されていません",
+                preferredStyle = UIAlertControllerStyleAlert
+        )
+        alert.addAction(UIAlertAction.actionWithTitle(
+                title = "OK",
+                style = UIAlertActionStyleDefault,
+                handler = null
+        ))
+        this.presentViewController(alert, animated = true, completion = null)
     }
 
     @ObjCAction
