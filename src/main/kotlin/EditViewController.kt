@@ -24,12 +24,44 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
                 target = this,
                 action = NSSelectorFromString("closeButtonDidTap:")
         )
+        this.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title = "追加",
+                style = UIBarButtonItemStylePlain,
+                target = this,
+                action = NSSelectorFromString("submitButtonDidTap:")
+        )
+
+        this.taskDeadlineLabel.text = "未設定"
     }
 
     @ObjCAction
     fun closeButtonDidTap(sender: ObjCObject?) {
-        taskList.add(TaskItem(title = "郵便局に行く", deadline = "2017.11.30 12:00"))
+        val alert = UIAlertController.alertControllerWithTitle(
+                title = "確認",
+                message = "編集中の画面を閉じてもよろしいですか？",
+                preferredStyle = UIAlertControllerStyleAlert
+        )
+        alert.addAction(UIAlertAction.actionWithTitle(
+                title = "Cancel",
+                style = UIAlertActionStyleCancel,
+                handler = null
+        ))
+        alert.addAction(UIAlertAction.actionWithTitle(
+                title = "閉じる",
+                style = UIAlertActionStyleDefault,
+                handler = {
+                    this.dismissViewControllerAnimated(true, completion = null)
+                }
+        ))
+        this.presentViewController(alert, animated = true, completion = null)
+    }
 
+    @ObjCAction
+    fun submitButtonDidTap(sender: ObjCObject?) {
+        taskList.add(TaskItem(
+                title = this.taskTitleTextField.text!!,
+                deadline = "2017.11.30 12:00"
+        ))
         this.dismissViewControllerAnimated(true, completion = null)
     }
 }
