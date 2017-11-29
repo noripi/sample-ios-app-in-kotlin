@@ -38,7 +38,7 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     }
 
     @ObjCAction
-    fun closeButtonDidTap(sender: ObjCObject?) {
+    private fun closeButtonDidTap(sender: ObjCObject?) {
         val alert = UIAlertController.alertControllerWithTitle(
                 title = "確認",
                 message = "編集中の画面を閉じてもよろしいですか？",
@@ -60,7 +60,7 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     }
 
     @ObjCAction
-    fun submitButtonDidTap(sender: ObjCObject?) {
+    private fun submitButtonDidTap(sender: ObjCObject?) {
         taskList.add(TaskItem(
                 title = this.taskTitleTextField.text ?: "",
                 deadline = "2017.11.30 12:00"
@@ -69,7 +69,7 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     }
 
     @ObjCAction
-    fun deadlineUpdateButtonDidTap(sender: ObjCObject?) {
+    private fun deadlineUpdateButtonDidTap(sender: ObjCObject?) {
         this.slideInDatePicker()
     }
 
@@ -77,12 +77,12 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
      * implements Date Picker + Toolbars behaviors
      *************************************************************/
     @ObjCAction
-    fun dateDidCancelChange(sender: ObjCObject?) {
+    private fun dateDidCancelChange(sender: ObjCObject?) {
         this.slideOutDatePicker()
     }
 
     @ObjCAction
-    fun dateDidSubmitChange(sender: ObjCObject?) {
+    private fun dateDidSubmitChange(sender: ObjCObject?) {
         this.slideOutDatePicker()
     }
 

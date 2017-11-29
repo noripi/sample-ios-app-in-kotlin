@@ -54,7 +54,7 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
     }
 
     @ObjCAction
-    fun addButtonDidTap(sender: ObjCObject?) {
+    private fun addButtonDidTap(sender: ObjCObject?) {
         val storyboard = UIStoryboard.storyboardWithName(MAIN_STORYBOARD_NAME, bundle = null)
         val editViewController = storyboard.instantiateViewControllerWithIdentifier(
                 EditViewController::class.simpleName!!)
