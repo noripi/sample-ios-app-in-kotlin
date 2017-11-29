@@ -54,6 +54,18 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
         return 80.0
     }
 
+    override fun tableView(tableView: UITableView, didSelectRowAtIndexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(didSelectRowAtIndexPath, animated = true)
+
+        val storyboard = UIStoryboard.storyboardWithName(MAIN_STORYBOARD_NAME, bundle = null)
+        val editViewController = storyboard.instantiateViewControllerWithIdentifier(
+                EditViewController::class.simpleName!!).uncheckedCast<EditViewController>()
+
+        editViewController.taskItemIndex = didSelectRowAtIndexPath.row.toInt()
+
+        this.navigationController?.pushViewController(editViewController, animated = true)
+    }
+
     @ObjCAction
     private fun addButtonDidTap(sender: ObjCObject?) {
         val storyboard = UIStoryboard.storyboardWithName(MAIN_STORYBOARD_NAME, bundle = null)

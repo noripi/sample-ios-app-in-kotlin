@@ -16,6 +16,9 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     @ObjCOutlet
     private lateinit var datePickerViewBottomOffset: NSLayoutConstraint
 
+    // Injectable Parameter
+    var taskItemIndex: Int? = null
+
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(EditViewController(aDecoder))
 
     override fun debugDescription() = this::class.simpleName!!
@@ -23,21 +26,43 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     override fun viewDidLoad() {
         super.viewDidLoad()
 
-        this.title = "タスクを追加"
-        this.navigationItem.leftBarButtonItem = UIBarButtonItem(
-                title = "閉じる",
-                style = UIBarButtonItemStylePlain,
-                target = this,
-                action = NSSelectorFromString("closeButtonDidTap:")
-        )
-        this.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title = "追加",
-                style = UIBarButtonItemStylePlain,
-                target = this,
-                action = NSSelectorFromString("submitButtonDidTap:")
-        )
+        val taskItemIndex = this.taskItemIndex
+        if (taskItemIndex == null) {
+            // case of new addition
+            this.title = "タスクを追加"
+            this.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                    title = "閉じる",
+                    style = UIBarButtonItemStylePlain,
+                    target = this,
+                    action = NSSelectorFromString("closeButtonDidTap:")
+            )
+            this.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    title = "追加",
+                    style = UIBarButtonItemStylePlain,
+                    target = this,
+                    action = NSSelectorFromString("submitButtonDidTap:")
+            )
 
-        this.taskDeadlineLabel.text = "未設定"
+            this.taskDeadlineLabel.text = "未設定"
+        } else {
+            // case of edit
+            this.title = "タスクを編集"
+            this.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                    title = "←",
+                    style = UIBarButtonItemStylePlain,
+                    target = this,
+                    action = NSSelectorFromString("closeButtonDidTap:")
+            )
+            this.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    title = "編集",
+                    style = UIBarButtonItemStylePlain,
+                    target = this,
+                    action = NSSelectorFromString("submitButtonDidTap:")
+            )
+
+            this.taskTitleTextField.text = taskList[taskItemIndex].title
+            this.taskDeadlineLabel.text = taskList[taskItemIndex].deadline.format(TASK_DATE_FORMAT)
+        }
     }
 
     @ObjCAction
@@ -56,7 +81,7 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
                 title = "閉じる",
                 style = UIAlertActionStyleDefault,
                 handler = {
-                    this.dismissViewControllerAnimated(true, completion = null)
+                    this.dismissOrPopViewController()
                 }
         ))
         this.presentViewController(alert, animated = true, completion = null)
@@ -73,8 +98,13 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
             return
         }
 
-        taskList.add(TaskItem(title = title, deadline = deadline))
-        this.dismissViewControllerAnimated(true, completion = null)
+        val taskItemIndex = this.taskItemIndex
+        if (taskItemIndex == null) {
+            taskList.add(TaskItem(title = title, deadline = deadline))
+        } else {
+            taskList.set(taskItemIndex, TaskItem(title = title, deadline = deadline))
+        }
+        this.dismissOrPopViewController()
     }
 
     private fun showInsufficientDataAlert() {
@@ -93,7 +123,16 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
 
     @ObjCAction
     private fun deadlineUpdateButtonDidTap(sender: ObjCObject?) {
+        this.taskTitleTextField.resignFirstResponder()
         this.slideInDatePicker()
+    }
+
+    private fun dismissOrPopViewController() {
+        if (this.taskItemIndex == null) {
+            this.dismissViewControllerAnimated(true, completion = null)
+        } else {
+            this.navigationController?.popViewControllerAnimated(true)
+        }
     }
 
     /*************************************************************
