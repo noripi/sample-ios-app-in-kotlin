@@ -10,6 +10,9 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     @ObjCOutlet
     private lateinit var taskDeadlineLabel: UILabel
 
+    @ObjCOutlet
+    private lateinit var datePickerViewBottomOffset: NSLayoutConstraint
+
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(EditViewController(aDecoder))
 
     override fun debugDescription() = this::class.simpleName!!
@@ -42,7 +45,7 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
                 preferredStyle = UIAlertControllerStyleAlert
         )
         alert.addAction(UIAlertAction.actionWithTitle(
-                title = "Cancel",
+                title = "キャンセル",
                 style = UIAlertActionStyleCancel,
                 handler = null
         ))
@@ -59,9 +62,43 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     @ObjCAction
     fun submitButtonDidTap(sender: ObjCObject?) {
         taskList.add(TaskItem(
-                title = this.taskTitleTextField.text!!,
+                title = this.taskTitleTextField.text ?: "",
                 deadline = "2017.11.30 12:00"
         ))
         this.dismissViewControllerAnimated(true, completion = null)
+    }
+
+    @ObjCAction
+    fun deadlineUpdateButtonDidTap(sender: ObjCObject?) {
+        this.slideInDatePicker()
+    }
+
+    /*************************************************************
+     * implements Date Picker + Toolbars behaviors
+     *************************************************************/
+    @ObjCAction
+    fun dateDidCancelChange(sender: ObjCObject?) {
+        this.slideOutDatePicker()
+    }
+
+    @ObjCAction
+    fun dateDidSubmitChange(sender: ObjCObject?) {
+        this.slideOutDatePicker()
+    }
+
+    private fun slideInDatePicker() {
+        this.datePickerViewBottomOffset.constant = 0.0
+
+        UIView.animateWithDuration(0.3) {
+            this.view.layoutIfNeeded()
+        }
+    }
+
+    private fun slideOutDatePicker() {
+        this.datePickerViewBottomOffset.constant = -260.0
+
+        UIView.animateWithDuration(0.3) {
+            this.view.layoutIfNeeded()
+        }
     }
 }

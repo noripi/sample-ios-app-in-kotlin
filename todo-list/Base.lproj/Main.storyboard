@@ -136,6 +136,43 @@
                                     <action selector="deadlineUpdateButtonDidTap:" destination="As6-NB-I89" eventType="touchUpInside" id="dsN-Xw-gdt"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzd-rW-TLZ" userLabel="Date Picker View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="260"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiR-8E-v8A">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem title="キャンセル" style="done" id="Rcx-xQ-yYp">
+                                                <connections>
+                                                    <action selector="dateDidCancelChange:" destination="As6-NB-I89" id="23S-Nz-A64"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="8CU-ph-G2O"/>
+                                            <barButtonItem title="設定" style="plain" id="iNO-Cx-2ke">
+                                                <connections>
+                                                    <action selector="dateDidSubmitChange:" destination="As6-NB-I89" id="TV4-jg-N6U"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HLN-B7-mtj">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="533651238.51435202">
+                                            <!--2017-11-29 12:27:18 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KiR-8E-v8A" secondAttribute="trailing" id="0ca-eI-AxH"/>
+                                    <constraint firstAttribute="bottom" secondItem="HLN-B7-mtj" secondAttribute="bottom" id="487-Gi-7fg"/>
+                                    <constraint firstAttribute="trailing" secondItem="HLN-B7-mtj" secondAttribute="trailing" id="GCP-ga-kSs"/>
+                                    <constraint firstItem="KiR-8E-v8A" firstAttribute="leading" secondItem="tzd-rW-TLZ" secondAttribute="leading" id="IbD-BY-h9v"/>
+                                    <constraint firstItem="HLN-B7-mtj" firstAttribute="leading" secondItem="tzd-rW-TLZ" secondAttribute="leading" id="isf-Vq-qI2"/>
+                                    <constraint firstItem="HLN-B7-mtj" firstAttribute="top" secondItem="KiR-8E-v8A" secondAttribute="bottom" id="rDf-fH-iVh"/>
+                                    <constraint firstItem="KiR-8E-v8A" firstAttribute="top" secondItem="tzd-rW-TLZ" secondAttribute="top" id="xky-Cd-X4k"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -144,7 +181,9 @@
                             <constraint firstItem="nzj-xb-Zh5" firstAttribute="leading" secondItem="7z8-tq-HiA" secondAttribute="trailing" constant="16" id="KT7-OI-PfZ"/>
                             <constraint firstItem="7z8-tq-HiA" firstAttribute="centerY" secondItem="nzj-xb-Zh5" secondAttribute="centerY" id="P7I-0P-8pS"/>
                             <constraint firstItem="nzj-xb-Zh5" firstAttribute="top" secondItem="kqK-M4-tAW" secondAttribute="top" constant="16" id="Wa9-A4-PIm"/>
+                            <constraint firstItem="tzd-rW-TLZ" firstAttribute="leading" secondItem="kqK-M4-tAW" secondAttribute="leading" id="XPE-bV-8Ar"/>
                             <constraint firstItem="vxs-mA-YUZ" firstAttribute="leading" secondItem="UcC-Iu-zyc" secondAttribute="trailing" constant="24" id="ZyQ-VD-PeW"/>
+                            <constraint firstItem="kqK-M4-tAW" firstAttribute="bottom" secondItem="tzd-rW-TLZ" secondAttribute="bottom" constant="-260" id="bzz-lr-Hps"/>
                             <constraint firstItem="UcC-Iu-zyc" firstAttribute="top" secondItem="7z8-tq-HiA" secondAttribute="bottom" constant="28" id="ceG-Qi-Qsx"/>
                             <constraint firstItem="kqK-M4-tAW" firstAttribute="trailing" secondItem="nzj-xb-Zh5" secondAttribute="trailing" constant="16" id="fPj-h0-uc7"/>
                             <constraint firstItem="kqK-M4-tAW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="an0-Sq-Mil" secondAttribute="trailing" constant="16" id="fu4-Yd-yfH"/>
@@ -152,11 +191,13 @@
                             <constraint firstItem="vxs-mA-YUZ" firstAttribute="centerY" secondItem="UcC-Iu-zyc" secondAttribute="centerY" id="jbO-eY-OZP"/>
                             <constraint firstItem="UcC-Iu-zyc" firstAttribute="width" secondItem="7z8-tq-HiA" secondAttribute="width" id="m9r-5j-Fzs"/>
                             <constraint firstItem="UcC-Iu-zyc" firstAttribute="leading" secondItem="7z8-tq-HiA" secondAttribute="leading" id="rej-jS-7sC"/>
+                            <constraint firstItem="kqK-M4-tAW" firstAttribute="trailing" secondItem="tzd-rW-TLZ" secondAttribute="trailing" id="wMN-bS-wqM"/>
                             <constraint firstItem="an0-Sq-Mil" firstAttribute="leading" secondItem="vxs-mA-YUZ" secondAttribute="trailing" constant="16" id="ysc-dE-AFj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kqK-M4-tAW"/>
                     </view>
                     <connections>
+                        <outlet property="datePickerViewBottomOffset" destination="bzz-lr-Hps" id="Git-zd-jPk"/>
                         <outlet property="taskDeadlineLabel" destination="vxs-mA-YUZ" id="gax-dM-ZIB"/>
                         <outlet property="taskTitleTextField" destination="nzj-xb-Zh5" id="Sf2-cx-3TN"/>
                     </connections>
