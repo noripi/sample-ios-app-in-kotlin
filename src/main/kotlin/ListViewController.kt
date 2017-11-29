@@ -39,7 +39,8 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
     }
 
     override fun tableView(tableView: UITableView, cellForRowAtIndexPath: NSIndexPath): UITableViewCell {
-        val cell = tableView.dequeueReusableCellWithIdentifier(TaskItemTableViewCell::class.simpleName!!,
+        val cell = tableView.dequeueReusableCellWithIdentifier(
+                TaskItemTableViewCell::class.simpleName!!,
                 cellForRowAtIndexPath).uncheckedCast<TaskItemTableViewCell>()
 
         val taskItem = taskList[cellForRowAtIndexPath.row.toInt()]
@@ -82,9 +83,9 @@ class TaskItemTableViewCell(aDecoder: NSCoder) : UITableViewCell(aDecoder) {
             this.taskTitleLabel.text = value
         }
 
-    var taskDeadline: String?
-        get() = this.taskDeadlineLabel.text
+    var taskDeadline: NSDate?
+        get() = this.taskDeadlineLabel.text?.toNSDate(TASK_DATE_FORMAT)
         set(value) {
-            this.taskDeadlineLabel.text = value
+            this.taskDeadlineLabel.text = value?.format(TASK_DATE_FORMAT)
         }
 }

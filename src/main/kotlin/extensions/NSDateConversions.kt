@@ -7,3 +7,11 @@ fun NSDate.format(format: String): String {
 
     return formatter.stringFromDate(this)
 }
+
+fun String.toNSDate(format: String): NSDate? {
+    val formatter = NSDateFormatter().apply {
+        this.dateFormat = format
+    }
+
+    return formatter.dateFromString(this)
+}

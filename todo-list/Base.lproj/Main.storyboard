@@ -197,6 +197,7 @@
                         <viewLayoutGuide key="safeArea" id="kqK-M4-tAW"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="HLN-B7-mtj" id="smA-Fe-N1D"/>
                         <outlet property="datePickerViewBottomOffset" destination="bzz-lr-Hps" id="Git-zd-jPk"/>
                         <outlet property="taskDeadlineLabel" destination="vxs-mA-YUZ" id="gax-dM-ZIB"/>
                         <outlet property="taskTitleTextField" destination="nzj-xb-Zh5" id="Sf2-cx-3TN"/>

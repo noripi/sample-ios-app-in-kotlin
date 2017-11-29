@@ -11,6 +11,9 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
     private lateinit var taskDeadlineLabel: UILabel
 
     @ObjCOutlet
+    private lateinit var datePicker: UIDatePicker
+
+    @ObjCOutlet
     private lateinit var datePickerViewBottomOffset: NSLayoutConstraint
 
     override fun initWithCoder(aDecoder: NSCoder) = this.initBy(EditViewController(aDecoder))
@@ -61,11 +64,21 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
 
     @ObjCAction
     private fun submitButtonDidTap(sender: ObjCObject?) {
-        taskList.add(TaskItem(
-                title = this.taskTitleTextField.text ?: "",
-                deadline = "2017.11.30 12:00"
-        ))
+        val title = this.taskTitleTextField.text?.takeIf { it.isNotBlank() } ?: run {
+            this.showInsufficientDataAlert()
+            return
+        }
+        val deadline = this.taskDeadlineLabel.text?.toNSDate(TASK_DATE_FORMAT) ?: run {
+            this.showInsufficientDataAlert()
+            return
+        }
+
+        taskList.add(TaskItem(title = title, deadline = deadline))
         this.dismissViewControllerAnimated(true, completion = null)
+    }
+
+    private fun showInsufficientDataAlert() {
+
     }
 
     @ObjCAction
@@ -83,10 +96,12 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
 
     @ObjCAction
     private fun dateDidSubmitChange(sender: ObjCObject?) {
+        this.taskDeadlineLabel.text = this.datePicker.date.format(TASK_DATE_FORMAT)
         this.slideOutDatePicker()
     }
 
     private fun slideInDatePicker() {
+        this.datePicker.date = this.taskDeadlineLabel.text?.toNSDate(TASK_DATE_FORMAT) ?: NSDate()
         this.datePickerViewBottomOffset.constant = 0.0
 
         UIView.animateWithDuration(0.3) {
