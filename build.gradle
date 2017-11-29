@@ -1,11 +1,10 @@
-apply plugin: 'konan'
+apply plugin: "konan"
 
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
-        }
+        maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
     }
 
     dependencies {
@@ -13,8 +12,8 @@ buildscript {
     }
 }
 
-konan.targets = ['iphone']
+konan.targets = ["iphone"]
 
 konanArtifacts {
-    program('app')
+    program("app")
 }
