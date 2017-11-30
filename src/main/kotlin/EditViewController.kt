@@ -1,6 +1,7 @@
 import kotlinx.cinterop.*
 import platform.Foundation.*
 import platform.UIKit.*
+import extensions.*
 
 @ExportObjCClass
 class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
