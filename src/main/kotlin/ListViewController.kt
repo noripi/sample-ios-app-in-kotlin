@@ -27,8 +27,6 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
                 target = this,
                 action = NSSelectorFromString("addButtonDidTap:")
         )
-
-        println(NSUserDefaults.standardUserDefaults.integerForKey("test"))
     }
 
     override fun viewWillAppear(animated: Boolean) {

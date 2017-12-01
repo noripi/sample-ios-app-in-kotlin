@@ -37,12 +37,31 @@ fun Int.toNSNumber(): NSNumber {
 }
 
 /**
- * Map -> Dictionary
+ * Map -> NSDictionary
  */
 fun <K : NSCopyingProtocol, V : ObjCObject> Map<K, V>.toNSDictionary(): NSDictionary {
     val mutable = NSMutableDictionary.dictionaryWithCapacity(this.size.toLong())
     this.forEach { (key, value) ->
         mutable[key] = value
+    }
+    return mutable
+}
+
+/**
+ * List <-> NSArray
+ */
+fun <T : NSStringConvertible> List<T>.toNSArray(): NSArray {
+    val mutable = NSMutableArray.arrayWithCapacity(this.size.toLong())
+    this.forEach {
+        mutable.addObject(it.toNSString())
+    }
+    return mutable
+}
+
+fun <T : NSStringBackConvertible<U>, U> NSArray.toList(companion: T): List<U> {
+    val mutable = mutableListOf<U>()
+    for (i in 0 until this.count) {
+        mutable.add(companion.fromNSString(this[i].uncheckedCast<NSString>()))
     }
     return mutable
 }
