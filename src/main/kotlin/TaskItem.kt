@@ -3,11 +3,7 @@ import extensions.*
 
 const val TASK_DATE_FORMAT = "yyyy.MM.dd HH:mm"
 
-data class TaskItem(val title: String, val deadline: NSDate) : NSStringConvertible {
-    override fun toNSString(): NSString {
-        return this.toString().toNSString()
-    }
-
+data class TaskItem(val title: String, val deadline: NSDate) : NSStringConvertible, Comparable<TaskItem> {
     companion object : NSStringBackConvertible<TaskItem> {
         private val OBJECT_PATTERN = NSRegularExpression.regularExpressionWithPattern(
                 "TaskItem\\(title=(.+?), deadline=(.+?)\\)", options = 0, error = null)!!
@@ -22,6 +18,14 @@ data class TaskItem(val title: String, val deadline: NSDate) : NSStringConvertib
 
             return TaskItem(title, deadline)
         }
+    }
+
+    override fun toNSString(): NSString {
+        return this.toString().toNSString()
+    }
+
+    override fun compareTo(other: TaskItem): Int {
+        return (this.deadline.timeIntervalSince1970 - other.deadline.timeIntervalSince1970).toInt()
     }
 }
 

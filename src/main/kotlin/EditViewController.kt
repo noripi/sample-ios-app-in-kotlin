@@ -105,6 +105,8 @@ class EditViewController(aDecoder: NSCoder) : UIViewController(aDecoder) {
         } else {
             taskList.set(taskItemIndex, TaskItem(title = title, deadline = deadline))
         }
+
+        taskList.sort()
         this.dismissOrPopViewController()
     }
 
