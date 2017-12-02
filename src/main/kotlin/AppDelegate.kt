@@ -32,15 +32,11 @@ class AppDelegate : UIResponder(), UIApplicationDelegateProtocol {
     }
 
     override fun applicationWillTerminate(application: UIApplication) {
-        println(taskList)
-
         NSUserDefaults.standardUserDefaults.setObject(taskList.toNSArray(),
                 forKey = TASK_LIST_UD_KEY)
     }
 
     override fun applicationDidEnterBackground(application: UIApplication) {
-        println(taskList)
-
         NSUserDefaults.standardUserDefaults.setObject(taskList.toNSArray(),
                 forKey = TASK_LIST_UD_KEY)
     }

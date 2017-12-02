@@ -1,4 +1,5 @@
 import kotlinx.cinterop.*
+import kotlin.reflect.*
 import platform.Foundation.*
 import platform.UIKit.*
 import platform.CoreGraphics.*
@@ -65,6 +66,18 @@ class ListViewController(aDecoder: NSCoder) : UIViewController(aDecoder),
         editViewController.taskItemIndex = didSelectRowAtIndexPath.row.toInt()
 
         this.navigationController?.pushViewController(editViewController, animated = true)
+    }
+
+    override fun tableView(tableView: UITableView, canEditRowAtIndexPath: NSIndexPath): Boolean {
+        return true
+    }
+
+    override fun tableView(tableView: UITableView, commitEditingStyle: UITableViewCellEditingStyle, forRowAtIndexPath: NSIndexPath) {
+        if (commitEditingStyle == UITableViewCellEditingStyle.UITableViewCellEditingStyleDelete) {
+            taskList.removeAt(forRowAtIndexPath.row.toInt())
+            tableView.deleteRowsAtIndexPaths(listOf(forRowAtIndexPath).toNSArray(),
+                    withRowAnimation = UITableViewRowAnimationAutomatic)
+        }
     }
 
     @ObjCAction

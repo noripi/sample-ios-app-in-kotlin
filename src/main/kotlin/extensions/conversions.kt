@@ -50,6 +50,14 @@ fun <K : NSCopyingProtocol, V : ObjCObject> Map<K, V>.toNSDictionary(): NSDictio
 /**
  * List <-> NSArray
  */
+fun <T : ObjCObject> List<T>.toNSArray(): NSArray {
+    val mutable = NSMutableArray.arrayWithCapacity(this.size.toLong())
+    this.forEach {
+        mutable.addObject(it)
+    }
+    return mutable
+}
+
 fun <T : NSStringConvertible> List<T>.toNSArray(): NSArray {
     val mutable = NSMutableArray.arrayWithCapacity(this.size.toLong())
     this.forEach {
