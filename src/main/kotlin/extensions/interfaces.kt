@@ -7,5 +7,5 @@ interface NSStringConvertible {
 }
 
 interface NSStringBackConvertible<T> {
-    fun fromNSString(string: NSString): T
+    fun fromNSString(string: NSString): T?
 }

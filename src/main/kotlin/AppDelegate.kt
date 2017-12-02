@@ -24,21 +24,23 @@ class AppDelegate : UIResponder(), UIApplicationDelegateProtocol {
                 TASK_LIST_UD_KEY.toNSString() to listOf<TaskItem>().toNSArray()
         ).toNSDictionary())
 
-        val taskListHoge: List<TaskItem> = NSUserDefaults.standardUserDefaults.arrayForKey(
+        val immutableTaskList = NSUserDefaults.standardUserDefaults.arrayForKey(
                 TASK_LIST_UD_KEY)?.toList(TaskItem.Companion) ?: listOf()
-        println(taskListHoge)
-
-        taskList = mutableListOf()
+        taskList = immutableTaskList.toMutableList()
 
         return true
     }
 
     override fun applicationWillTerminate(application: UIApplication) {
+        println(taskList)
+
         NSUserDefaults.standardUserDefaults.setObject(taskList.toNSArray(),
                 forKey = TASK_LIST_UD_KEY)
     }
 
     override fun applicationDidEnterBackground(application: UIApplication) {
+        println(taskList)
+
         NSUserDefaults.standardUserDefaults.setObject(taskList.toNSArray(),
                 forKey = TASK_LIST_UD_KEY)
     }

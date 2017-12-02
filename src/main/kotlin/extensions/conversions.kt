@@ -14,7 +14,7 @@ fun NSDate.format(format: String): String {
     return formatter.stringFromDate(this)
 }
 
-fun String.toNSDate(format: String): NSDate? {
+fun String.toNSDate(format: String = "yyyy-MM-dd HH:mm:ss ZZZ"): NSDate? {
     val formatter = NSDateFormatter().apply {
         this.dateFormat = format
     }
@@ -61,7 +61,9 @@ fun <T : NSStringConvertible> List<T>.toNSArray(): NSArray {
 fun <T : NSStringBackConvertible<U>, U> NSArray.toList(companion: T): List<U> {
     val mutable = mutableListOf<U>()
     for (i in 0 until this.count) {
-        mutable.add(companion.fromNSString(this[i].uncheckedCast<NSString>()))
+        companion.fromNSString(this[i].uncheckedCast<NSString>())?.let {
+            mutable.add(it)
+        }
     }
     return mutable
 }
